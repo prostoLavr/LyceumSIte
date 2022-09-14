@@ -1,8 +1,10 @@
+upstream app_server {
+    server unix:/home/lawrence/lyceum/lyceum.sock;
 server {
     listen 80;
     server_name lyceum.lava-land.ru;
+    root /home/lawrence/lyceum;
     location / {
-        root /home/lawrence/lyceum;
-        include http://unix:lyceum.sock;
+        proxy_pass http://app_server;
     }
 }
