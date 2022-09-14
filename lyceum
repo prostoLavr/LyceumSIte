@@ -1,9 +1,7 @@
-http {
-    server {
-        listen 80;
-        server_name lyceum.lava-land.ru;
-        location / {
-            include     /home/lawrence/lyceum/lyceum.unix;
-        }
+server {
+    listen 80;
+    server_name lyceum.lava-land.ru;
+    location / {
+        include     /home/lawrence/lyceum/lyceum.unix;
     }
 }
