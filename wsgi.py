@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 
 wsgi_app = Flask(__name__)
@@ -6,5 +6,5 @@ wsgi_app = Flask(__name__)
 
 @wsgi_app.route('/')
 def index():
-    return '<h1>Вас приветствует сайт Лицея №2</h1>'
+    return render_template('index.html')
 
