@@ -2,7 +2,7 @@ server {
     listen 80;
     server_name lyceum.lava-land.ru;
     location / {
-        root /home/lawrence/lyceum/ 
+        root /home/lawrence/lyceum;
         include http://unix:lyceum.sock;
     }
 }
