@@ -1,13 +1,14 @@
-<!DOCTYPE HTML>
-<head>
-    <title>Лицей №2</title>
-</head>
-<body>
-    <h1>Вас приветствует будущий сайт Лицея №2</h1>
-    <p>Ваши идеи и предложения в тг: @justLawre</p>
-    <div>
-        {% block content %}
+{% extends "bootstrap/base.html" %}
+
+{% block title %} Лицей №2 {% endblock %}
+
+{% block content %}
+<h1>Вас приветствует будущий сайт Лицея №2</h1>
+<p>Ваши идеи и предложения в тг: @justLawre</p>
+<div class="container">
+    <div class="page-header">
+        {% block body %}
         {% endblock %}
     </div>
-</body>
-
+</div>
+{% endblock %}

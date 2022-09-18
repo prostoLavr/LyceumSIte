@@ -1,5 +1,20 @@
-{% extends "base.html" %}
+{% extends "bootstrap/base.html" %}
+
+{% block title %} Лицей №2 {% endblock %}
 
 {% block content %}
-<a href="/timetable">Расписание звонков</a>
+<div class="container">
+  <!-- Сложите колонки на мобильном устройстве, сделав одну полную, а другую половинную -->
+  <div class="row">
+    <div class="col-md-8">
+        <h1>Будущий сайт Лицея №2</h1>
+        <p>Ваши идеи и предложения в тг: @justLawre</p>
+    </div>
+    <div class="col-6 col-md-4">
+        <div class="btn-group" role="group" aria-label="navigation">
+          <button type="button" class="btn btn-info">Расписание звонков</button>
+        </div>
+    </div>
+  </div>
+</div>
 {% endblock %}
