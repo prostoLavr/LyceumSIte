@@ -4,7 +4,7 @@ upstream app_server {
 
 server {
     listen 80;
-    server_name lyceum.lava-land.ru;
+    server_name lava-land.ru lyceum.lava-land.ru;
 
     root /home/lawrence/lyceum;
 
