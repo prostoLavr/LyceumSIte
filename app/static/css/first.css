@@ -10,7 +10,8 @@ body {
 }
 
 th, td, p, h1, h2, h3, h4, a, span, small, label{
-color: #FFF;
+    font-family: 'OpenSans regular';
+    color: #FFF;
 }
 .my-input-label {
     color: #999;
@@ -57,4 +58,9 @@ hr {
 }
 
 .real-center {
+}
+
+@font-face {
+	font-family: 'OpenSans regular';
+	src: url(/static/fonts/OpenSans-Regular.ttf);
 }

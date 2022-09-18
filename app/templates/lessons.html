@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+<table border="1" class="table">
+    <caption>Расписание уроков</caption>
+    <thead>
+       <tr>
+           <th scope="col">№</th>
+           {% if state == 0 %}
+            <th scope="col">Понедельник</th>
+           {% elif state == 1 %}
+               <th scope="col">Вторник</th>
+           {% elif state == 2 %}
+               <th scope="col">Среда</th>
+           {% elif state == 3 %}
+               <th scope="col">Четверг</th>
+           {% elif state == 4 %}
+               <th scope="col">Пятница</th>
+           {% else %}
+               <th scope="col">Суббота</th>
+           {% endif %}
+       </tr>
+   </thead>
+</table>
+{% endblock%}
