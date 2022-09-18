@@ -5,8 +5,8 @@ After=network.target
 [Service]
 User=lawrence
 Group=www-data
-WorkingDirectory=/home/lawrence/lyceum/
-ExecStart=/home/lawrence/.local/bin/gunicorn --limit-request-field_size 17179869184 --workers 1 --bind unix:lyceum.sock -m 777 wsgi:wsgi_app
+WorkingDirectory=/var/www/LyceumSite/
+ExecStart=/usr/bin/gunicorn --limit-request-field_size 17179869184 --workers 1 --bind unix:lyceum.sock -m 777 wsgi:wsgi_app
 Restart=always
 KillSignal=SIGQUIT
 StandardError=syslog
