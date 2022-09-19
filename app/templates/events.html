@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+    <h1>Мероприятия:</h1>
+    {% for e in events %}
+        <div class="container">
+            <h2>{{ e.name }} (<small>{{ "{:%d, %B %Y}".format(e.date) }}</small>) </h2>
+            <p>{{ e.desc }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
