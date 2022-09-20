@@ -1,6 +1,6 @@
-from app import wsgi_app
+from app import wsgi_app, config
 from flask import render_template, redirect
-from .data import db_handler, event_data
+from .data import db_handler, event_data, timetable_data
 import datetime
 
 
@@ -11,13 +11,21 @@ def index():
 
 @wsgi_app.route('/timetable')
 def timetable():
-    state = datetime.datetime.today().weekday()
-    return render_template('timetable.html', state=state)
+    state = datetime.datetime.now()
+    if datetime.time(state.hour, state.minute) > config.last_lesson_time:
+        state = {2: 1, 3: 1, 4: 1, 5: 2, 6: 0}.get(state.weekday() + 1, state.weekday() + 1)
+    else:
+        state = {2: 1, 3: 1, 4: 1, 5: 2, 6: 0}.get(state.weekday(), state.weekday())
+    return render_template('timetable.html', timetable_data=timetable_data[str(state)], state=state)
 
 
 @wsgi_app.route('/lessons')
 def lessons():
-    state = datetime.datetime.today().weekday()
+    state = datetime.datetime.now()
+    if datetime.time(state.hour, state.minute) > config.last_lesson_time:
+        state = state.weekday() + 1
+    else:
+        state = state.weekday()
     return render_template('lessons.html', state=state)
 
 
@@ -31,3 +39,9 @@ def events():
 def add_event():
     db_handler.add_event(event_data(1, None, 'ABC', 'HAIFGDSAHGNBP'))
     return redirect('/events/list')
+
+
+@wsgi_app.route('/events/event/<int:id>')
+def event(id):
+    e = db_handler.get_event(id)
+    return render_template('event.html', event=e)

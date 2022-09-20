@@ -4,12 +4,17 @@ from sqlalchemy.orm import Session
 import sqlalchemy.ext.declarative as dec
 from collections import namedtuple
 import os
+import json
 
 
-db_path = os.path.join('app', 'data', 'data.db')
+files_path = os.path.join('app', 'data')
+db_path = os.path.join(files_path, 'data.db')
 
 SqlAlchemyBase = dec.declarative_base()
 event_data = namedtuple('event_data', ['id', 'date', 'name', 'desc'])
+
+timetable_data = json.load(open(os.path.join(files_path, 'timetable_data.json')))
+#  state: [ ["start:time-end:time", peremena_duration]... ]
 
 __factory = None
 

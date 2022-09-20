@@ -22,3 +22,9 @@ def get_all_events():
     db_sess = create_session()
     events = db_sess.query(Event).all()
     return events
+
+
+def get_event(event_id):
+    db_sess = create_session()
+    e = db_sess.query(Event).filter_by(id=event_id).first()
+    return e

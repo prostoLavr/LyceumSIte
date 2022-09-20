@@ -5,8 +5,15 @@
     <h1>Мероприятия:</h1>
     {% for e in events %}
         <div class="container">
-            <h2>{{ e.name }} (<small>{{ "{:%d, %B %Y}".format(e.date) }}</small>) </h2>
-            <p>{{ e.desc }}</p>
+            <h2>
+                <a href="/events/event/{{ e.id }}">{{ e.name }}</a>
+                <small>({{ "{:%d, %B %Y}".format(e.date) }})</small>
+            </h2>
+            {% if e.desc|length > 100 %}
+                <p>{{ e.desc[:100] }}...</p>
+            {% else %}
+                <p>{{ e.desc }}</p>
+            {% endif %}
         </div>
     {% endfor %}
 {% endblock %}

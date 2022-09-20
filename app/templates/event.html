@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+
+{% block body %}
+    <div class="my-card">
+        <div class="card-body gray">
+            <div class="d-flex justify-content-between align-items-center">
+                <h1 class="my-clip card-text">{{ event.name }}</h1>
+                <p>{{ "{:%d, %B %Y}".format(event.date) }}</p>
+            </div>
+            <br>
+            <p>{{ event.desc }}</p>
+        </div>
+    </div>
+{% endblock %}
