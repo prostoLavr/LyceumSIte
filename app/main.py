@@ -1,6 +1,6 @@
 from app import wsgi_app, config
 from flask import render_template, redirect
-from .data import db_handler, event_data, timetable_data
+from .data import db_handler, event_data, timetable_data, short_timetable_data
 import datetime
 
 
@@ -26,7 +26,10 @@ def lessons():
         state = state.weekday() + 1
     else:
         state = state.weekday()
-    return render_template('lessons.html', state=state)
+    data = db_handler.get_lessons(state, '10b')
+    data.pop('day')
+    return render_template('lessons.html', state=state, lessons_data=data.items(),
+                           timetable_data=short_timetable_data[str({2: 1, 3: 1, 4: 1, 5: 2, 6: 0}.get(state, state))])
 
 
 @wsgi_app.route('/events/list')

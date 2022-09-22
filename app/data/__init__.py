@@ -8,13 +8,17 @@ import json
 
 
 files_path = os.path.join('app', 'data')
-db_path = os.path.join(files_path, 'data.db')
+db_path = os.path.join('app', 'data', 'data.db')
 
 SqlAlchemyBase = dec.declarative_base()
 event_data = namedtuple('event_data', ['id', 'date', 'name', 'desc'])
 
 timetable_data = json.load(open(os.path.join(files_path, 'timetable_data.json')))
+short_timetable_data = timetable_data["short"]
+timetable_data = timetable_data["full"]
 #  state: [ ["start:time-end:time", peremena_duration]... ]
+lessons_data = json.load(open(os.path.join(files_path, 'lessons_data.json'), encoding='utf-8'))
+#  class: [{ "day": datetime.weekday, "0": "", "1 elective": ""... }, ...]
 
 __factory = None
 

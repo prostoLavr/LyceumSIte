@@ -3,24 +3,33 @@
 
 {% block body %}
 <table border="1" class="table">
-    <caption>Расписание уроков</caption>
+    <caption>Расписание уроков 10Б
+        {% if state == 0 %}
+        Понедельник
+       {% elif state == 1 %}
+           Вторник
+       {% elif state == 2 %}
+           Среда
+       {% elif state == 3 %}
+           Четверг
+       {% elif state == 4 %}
+           Пятница
+       {% else %}
+           Суббота
+       {% endif %}</caption>
     <thead>
        <tr>
            <th scope="col">№</th>
-           {% if state == 0 %}
-            <th scope="col">Понедельник</th>
-           {% elif state == 1 %}
-               <th scope="col">Вторник</th>
-           {% elif state == 2 %}
-               <th scope="col">Среда</th>
-           {% elif state == 3 %}
-               <th scope="col">Четверг</th>
-           {% elif state == 4 %}
-               <th scope="col">Пятница</th>
-           {% else %}
-               <th scope="col">Суббота</th>
-           {% endif %}
+           <th scope="col">Длительность</th>
+           <th scope="col">Предмет</th>
        </tr>
    </thead>
+    {% for num, name in lessons_data %}
+        <tr>
+            <th scope="row">{{ num }}</th>
+            <td class="timetable">{{ timetable_data[loop.index - 1] }}</td>
+            <td class="timetable">{{ name }}</td>
+        </tr>
+    {% endfor %}
 </table>
 {% endblock%}
