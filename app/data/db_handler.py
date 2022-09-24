@@ -33,8 +33,9 @@ def get_event(event_id):
 def get_lessons(weekday: int, cls: str) -> dict:
     """
 
-    :param weekday: 0~5
+    :param weekday: 0~6
     :param cls: {8-11}{a,b,v}
     :return:
     """
+    weekday %= 6
     return [i for i in lessons_data[cls] if i['day'] == weekday][0]
