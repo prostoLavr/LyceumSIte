@@ -8,7 +8,12 @@ body {
     border-radius: .3rem;
     border-color: #FFF;
 }
-
+.no-dots li {
+    list-style-type: none; /* Убираем маркеры */
+}
+.no-dots {
+    padding-left: 0; /* Сдвигаем список влево */
+}
 th, td, p, h1, h2, h3, h4, a, span, small, label{
     font-family: 'OpenSans regular';
     color: #FFF;
@@ -40,6 +45,8 @@ th, td, p, h1, h2, h3, h4, a, span, small, label{
 	text-decoration: none;
 }
 .my-pink-link-active {
+    position: relative;
+    text-decoration: none;
     color: #DD24EE;
 }
 .my-outline-button{
@@ -56,10 +63,6 @@ hr {
 .dark {
     color: black;
 }
-
-.real-center {
-}
-
 @font-face {
 	font-family: 'OpenSans regular';
 	src: url(/static/fonts/OpenSans-Regular.ttf);

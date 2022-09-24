@@ -12,12 +12,11 @@
     <div class=" container">
         <header class="my-pink-header my-header d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4">
           <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-            <span class="nav-link fs-3 my-pink-link">lava-land.ru</span>
+            <span class="nav-link fs-3 my-pink-link {% if pages[0] %}my-pink-link-active{% endif %}">lava-land.ru</span>
           </a>
-          <ul class="navbar col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-              <li><a href="/" class="nav-link px-2 fs-5 my-pink-link">Главная</a></li>
-              <li><a href="/timetable" class="nav-link px-2 fs-5 my-pink-link">Расписание звонков</a></li>
-              <li><a href="/lessons" class="nav-link px-2 fs-5 my-pink-link">Расписание уроков</a></li>
+          <ul class="no-dots navbar col-12 col-md-auto mb-2 justify-content-center mb-md-0">
+              <li><a href="/timetable" class="nav-link px-2 fs-5 my-pink-link {% if pages[1] %}my-pink-link-active{% endif %}">Звонки</a></li>
+              <li><a href="/lessons" class="nav-link px-2 fs-5   my-pink-link {% if pages[2] %}my-pink-link-active{% endif %}">Уроки</a></li>
           </ul>
         </header>
     </div>

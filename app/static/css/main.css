@@ -9,13 +9,6 @@
 .fixed-size {
     resize: none;
 }
-
-.my-pink {
-color: #B35CF7;
-}
-.my-pink-link:hover {
-    color: #DD24EE;
-}
 .unselectable {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -23,6 +16,12 @@ color: #B35CF7;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+}
+.my-pink {
+color: #B35CF7;
+}
+.my-pink-link:hover {
+    color: #DD24EE;
 }
 .my-pink-link::before {
 	content: '';
@@ -34,9 +33,20 @@ color: #B35CF7;
 	height: 1.5px;
 	background-color: #DD24EE;
 }
+.my-pink-link:hover:before {
+	width: 100%;}
+.my-pink-link::before {
+	transition: width 0.30s;}
+}
 .my-pink-link:active, my-pink-link:focus {
     color: #DD24EE;
 }
+/* Только для пк: */
+@media only screen
+and (min-device-width : 1200px) {
+.my-pink-link-active:before {
+	width: 100%;}
+
 .my-input:focus, my-input:active, my-input:hover {
     color: #FFF;
     border: none;
@@ -54,21 +64,6 @@ color: #B35CF7;
     -webkit-text-fill-color: #FFF;
 }
 
-
-
-/* Только для пк: */
-@media only screen
-and (min-device-width : 1200px) {
-.my-pink-link-active:before {
-	width: 100%;}
-.my-pink-link:hover:before {
-	width: 100%;}
-.my-pink-link::before {
-	transition: width 0.30s;}
-}
-
-
-
 .my-pink-checkbox {
     accent-color: #7A1F9C;
 }
@@ -84,18 +79,12 @@ and (min-device-width : 1200px) {
     background-color: #DD24EE;
     border-color: #DD24EE;
 }
-
 .my-pink-button:hover {
     color: #FFF;
     background: #DD24EE;
 }
-
 .my-big-text {
 word-wrap: break-word;
-}
-
-.my-pink-link:hover {
-    color: #DD24EE;
 }
 .my-pink-outline-button:hover {
     color: #fff;
