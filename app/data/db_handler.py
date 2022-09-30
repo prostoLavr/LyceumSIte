@@ -11,7 +11,6 @@ def add_event(data: event_data):
     """
     if data.date is None:
         data = event_data(id=data.id, date=datetime.datetime.now(), name=data.name, desc=data.desc)
-    print(data)
     event = Event(id=data.id, date=data.date, name=data.name, desc=data.desc)
     db_sess = create_session()
     db_sess.add(event)
@@ -38,4 +37,4 @@ def get_lessons(weekday: int, cls: str) -> dict:
     :return:
     """
     weekday %= 6
-    return [i for i in lessons_data[cls] if i['day'] == weekday][0]
+    return [i.copy() for i in lessons_data[cls] if i['day'] == weekday][0]
