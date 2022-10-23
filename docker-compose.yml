@@ -1,0 +1,12 @@
+version: "3"
+services:
+  lyceum_app:
+    image: lyceum-app
+    restart: always
+    networks:
+      front_net:
+
+networks:
+  front_net:
+    external: True
+
