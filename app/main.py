@@ -4,6 +4,9 @@ from .data import db_handler, event_data, timetable_data, short_timetable_data
 import datetime
 
 
+show_days = {2: 1, 3: 1, 4: 1, 5: 2, 6: 0, 7: 0}
+
+
 def my_render_template(*args, **kwargs):
     active_page: str or None = kwargs.get('active_page')
     if active_page and active_page.startswith('/'):
@@ -28,9 +31,9 @@ def index():
 def timetable():
     state = datetime.datetime.now()
     if datetime.time(state.hour, state.minute) > config.last_lesson_time:
-        state = {2: 1, 3: 1, 4: 1, 5: 2, 6: 0}.get(state.weekday() + 1, state.weekday() + 1)
+        state = show_days.get(state.weekday() + 1, state.weekday() + 1)
     else:
-        state = {2: 1, 3: 1, 4: 1, 5: 2, 6: 0}.get(state.weekday(), state.weekday())
+        state = show_days.get(state.weekday(), state.weekday())
     return my_render_template('timetable.html', timetable_data=timetable_data[str(state)], state=state)
 
 
@@ -44,7 +47,7 @@ def lessons():
     data = db_handler.get_lessons(state, '10b')
     data.pop('day')
     return my_render_template('lessons.html', state=state, lessons_data=data.items(),
-                           timetable_data=short_timetable_data[str({2: 1, 3: 1, 4: 1, 5: 2, 6: 0}.get(state, state))])
+                           timetable_data=short_timetable_data[str(show_days.get(state, state))])
 
 
 @wsgi_app.route('/events/list')
