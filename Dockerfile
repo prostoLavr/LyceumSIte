@@ -2,11 +2,10 @@ FROM python:3.10-slim
 WORKDIR /app
 RUN  apt-get update && apt-get install -y python3-pip libpq-dev python3-dev
 COPY requirements.txt ./
-COPY wheels /wheels
-RUN /usr/bin/python3 -m pip install --no-cache -r requirements.txt && \
-    /usr/bin/python3 -m pip install --no-cache /wheels/*
+RUN /usr/bin/python3 -m pip install --no-cache -r requirements.txt
 
-COPY app/ ./
+COPY wsgi.py ./
+COPY app ./app
 
 CMD ["/usr/bin/python3", \
      "-m", "gunicorn", \
