@@ -1,4 +1,6 @@
 Flask
 flask-sqlalchemy
-gunicorn
+uwsgi
+requests
 flask-bootstrap
+
