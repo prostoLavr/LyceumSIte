@@ -8,6 +8,7 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
         timestamps()
     }
+    properties([pipelineTriggers([githubPush()])])
     stages {
         stage("Build image"){
             steps {
